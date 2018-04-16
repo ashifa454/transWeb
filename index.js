@@ -6,9 +6,9 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/transl',(req,res)=>{
-    googleTranslitrate.transliterate(req.body.message,'hi','en',(err,data)=>{
+    googleTranslitrate.transliterate(req.body.message,'en','hi',(err,data)=>{
         console.log(data);
-        (err)?res.json(err):res.json(data[0].hws);
+        (err)?res.json(err):res.json(data[0].hws[0]);
     });
 })
 app.listen(port,()=>{
